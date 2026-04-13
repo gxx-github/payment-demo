@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merchant - Wallet Pay Demo</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 720px; margin: 24px auto; padding: 0 16px; }
+    .row { display: flex; gap: 12px; align-items: center; }
+    input, button { font-size: 16px; padding: 8px 10px; }
+    pre { background: #f5f5f7; padding: 12px; border-radius: 8px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h2>商家端</h2>
+  <p>将用户 DApp 的二维码内容粘贴到下方，或对接扫码枪。</p>
+  <div class="row">
+    <input id="scan" placeholder='粘贴 "{"t":"order","id":"..."}"' style="flex:1" />
+    <button id="connect">连接订单</button>
+  </div>
+
+  <h3>发起支付请求</h3>
+  <div class="row">
+    <input id="to" placeholder="收款地址(to)" style="flex:1" />
+    <input id="from" placeholder="用户地址(from，可留空)" style="flex:1" />
+  </div>
+  <div class="row">
+    <input id="value" placeholder="value (wei)" style="flex:1" />
+    <input id="data" placeholder="data (0x...) 可选" style="flex:1" />
+    <button id="requestPay">请求支付</button>
+  </div>
+
+  <pre id="log"></pre>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.7/dist/axios.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script>
+    const serverBase = location.origin.replace(/:\d+$/, ':8787');
+    let orderId = null;
+
+    function append(msg){
+      const el = document.getElementById('log');
+      el.textContent += `\n${new Date().toLocaleTimeString()} ${msg}`;
+    }
+
+    document.getElementById('connect').onclick = async () => {
+      try {
+        const obj = JSON.parse(document.getElementById('scan').value);
+        if(obj.t !== 'order') throw new Error('不是订单二维码');
+        orderId = obj.id;
+        const socket = io(serverBase);
+        socket.emit('join_order', orderId);
+        append('已连接订单房间: ' + orderId);
+      } catch(e){
+        append('解析失败: ' + e.message);
+      }
+    };
+
+    document.getElementById('requestPay').onclick = async () => {
+      if(!orderId) return append('请先连接订单');
+      const to = document.getElementById('to').value;
+      const from = document.getElementById('from').value || undefined;
+      const value = document.getElementById('value').value;
+      const data = document.getElementById('data').value || undefined;
+      await axios.post(`${serverBase}/api/orders/${orderId}/request-pay`, { to, from, value, data });
+      append('已向订单推送支付请求');
+    };
+  </script>
+</body>
+</html>

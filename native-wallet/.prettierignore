@@ -1,0 +1,10 @@
+node_modules/
+build/
+dist/
+.expo/
+.expo-shared/
+ios/
+android/
+coverage/
+*.lock
+

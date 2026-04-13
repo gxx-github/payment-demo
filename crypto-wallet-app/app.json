@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Crypto Wallet",
+    "slug": "crypto-wallet-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cryptowallet.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.cryptowallet.app",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-camera"
+    ],
+    "permissions": [
+      "CAMERA",
+      "CAMERA_ROLL",
+      "ACCESS_FINE_LOCATION",
+      "USE_BIOMETRIC",
+      "USE_FINGERPRINT"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "42bce8eb-826d-43f2-9de7-b3ce89aed784"
+      }
+    }
+  }
+}

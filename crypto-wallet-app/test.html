@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wallet App - 测试页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        .features {
+            text-align: left;
+            margin: 30px 0;
+        }
+        .feature {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .feature:last-child {
+            border-bottom: none;
+        }
+        .feature-icon {
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        .feature-text {
+            font-size: 16px;
+            color: #333;
+        }
+        .link {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .link:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">💰</div>
+        <h1 class="title">Crypto Wallet App</h1>
+        <p class="subtitle">跨平台加密货币钱包应用</p>
+        
+        <div class="status">✅ 项目运行成功！</div>
+        
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">🔐</span>
+                <span class="feature-text">钱包创建和管理</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">💸</span>
+                <span class="feature-text">USDC转账功能</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">📱</span>
+                <span class="feature-text">跨平台支持 (Web/Android/iOS)</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🔒</span>
+                <span class="feature-text">安全加密存储</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">📷</span>
+                <span class="feature-text">二维码扫描</span>
+            </div>
+        </div>
+        
+        <div>
+            <a href="http://localhost:19006" class="link">打开应用</a>
+            <a href="http://localhost:19000" class="link">Expo DevTools</a>
+        </div>
+        
+        <p style="margin-top: 30px; color: #999; font-size: 14px;">
+            项目已成功启动，可以在浏览器中访问应用了！
+        </p>
+    </div>
+</body>
+</html>
